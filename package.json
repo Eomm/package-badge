@@ -4,8 +4,10 @@
   "description": "Package maintenance badges",
   "main": "server.js",
   "dependencies": {
-    "fastify": "^2.3.0",
-    "gh-badges": "^2.1.0"
+    "fastify": "^2.4.1",
+    "gh-badges": "^2.1.0",
+    "package-compliant": "^1.1.1",
+    "package-json": "^6.3.0"
   },
   "devDependencies": {
     "standard": "^12.0.1"
