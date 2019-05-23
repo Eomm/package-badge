@@ -11,12 +11,13 @@
     "package-json": "^6.3.0"
   },
   "devDependencies": {
+    "pre-commit": "^1.2.2",
     "standard": "^12.0.1"
   },
   "scripts": {
     "lint": "standard",
     "lint:fix": "standard --fix",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && npm run lint"
   },
   "repository": {
     "type": "git",
