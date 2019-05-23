@@ -1,12 +1,17 @@
 'use strict'
 
 const Fastify = require('fastify')
+const path = require('path')
 const packageJson = require('package-json')
 const { validateSupportField } = require('package-compliant')
 const { BadgeFactory } = require('gh-badges')
 
 const app = Fastify({ logger: true })
 const bf = new BadgeFactory()
+
+app.register(require('fastify-static'), {
+  root: path.join(__dirname, 'public'),
+})
 
 // TODO evaluate https://shields.io/endpoint
 
