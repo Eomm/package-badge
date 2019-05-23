@@ -30,5 +30,10 @@
   "bugs": {
     "url": "https://github.com/Eomm/package-badge/issues"
   },
-  "homepage": "https://github.com/Eomm/package-badge#readme"
+  "homepage": "https://github.com/Eomm/package-badge#readme",
+  "support": {
+    "target": "LATEST",
+    "response": "BEST-EFFORT",
+    "backing": "HOBBY"
+  }
 }
