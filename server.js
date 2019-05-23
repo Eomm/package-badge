@@ -10,7 +10,7 @@ const app = Fastify({ logger: true })
 const bf = new BadgeFactory()
 
 app.register(require('fastify-static'), {
-  root: path.join(__dirname, 'public'),
+  root: path.join(__dirname, 'public')
 })
 
 // TODO evaluate https://shields.io/endpoint
@@ -25,14 +25,14 @@ async function badgeHandler (request, reply) {
   const format = {
     text: ['support', 'not defined'],
     format: 'svg',
-    color: 'gray',
+    colorscheme: 'lightgray',
     template: 'flat'
   }
 
   try {
     validateSupportField(theJson.support)
     format.text = [field.toLowerCase(), theJson.support[field]]
-    format.color = 'green'
+    format.colorscheme = 'green'
   } catch (error) {
     app.log.error(error)
   }
