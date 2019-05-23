@@ -44,8 +44,19 @@
           <input id='package-name' type="text" placeholder="package name">
         </div>
 
+        <div class="mui-select">
+          <select id='package-option'>
+            <option value='target'>Target</option>
+            <option value='response'>Response</option>
+            <option value='backing'>Backing</option>
+            <option value='response-paid'>Response Paid</option>
+            <option value='url'>URL</option>
+          </select>
+          <label>Select Type</label>
+        </div>
+
         <div class="mui-textfield">
-          <textarea id='badge-markdown' placeholder="" disabled></textarea>
+          <textarea id='badge-markdown' placeholder=""></textarea>
         </div>
 
         <button id='generate-badge-button' class="mui-btn mui-btn--primary mui-btn--raised">Generate Badge</button>
@@ -58,7 +69,8 @@
           .querySelector('#generate-badge-button')
           .addEventListener('click', async () => {
             const package = document.querySelector('#package-name').value;
-            const badge = `![package maintenance status](${window.location.href}/backing/${package})`
+            const option = document.querySelector('#package-option').value;
+            const badge = `![package maintenance status](${window.location.href}${option}/${package})`;
             document.querySelector('#badge-markdown').innerHTML = badge;
           }, false);
       };
