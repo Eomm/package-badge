@@ -32,8 +32,9 @@ module.exports = function badge (fastify, options, next) {
   async function getPackageBadge (field, scope, packageName) {
     const theJson = await packageJson(`${scope ? scope + '/' : ''}${packageName}`, { fullMetadata: true })
 
+    const missing = 'not defined'
     const format = {
-      text: ['support', 'not defined'],
+      text: ['support', missing],
       format: 'svg',
       colorscheme: 'lightgray',
       template: 'flat'
@@ -41,7 +42,7 @@ module.exports = function badge (fastify, options, next) {
 
     try {
       validateSupportField(theJson.support)
-      format.text = [field.toLowerCase(), theJson.support[field]]
+      format.text = [field.toLowerCase(), theJson.support[field] || missing]
       format.colorscheme = 'green'
     } catch (error) {
       // validation err
