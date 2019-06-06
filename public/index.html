@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Package Maintenance Team</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- load MUI -->
+    <link href="//cdn.muicss.com/mui-0.9.41/css/mui.min.css" rel="stylesheet" type="text/css" />
+    <style  type="text/css">
+      body {
+        background: #eee;
+      }
+
+      .mui-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 8rem;
+      }
+
+      .mui-panel {
+        padding: 2rem;
+      }
+
+      .mui-panel p {
+        font-size: 16px;
+        width: 500px;
+      }
+    </style>
+    <script src="//cdn.muicss.com/mui-0.9.41/js/mui.min.js"></script>
+  </head>
+  <body>
+    <section class="mui-container">
+      <div class="mui-panel">
+        <h1>Package Maintenance Team</h1>
+
+        <p>Working Group for discussion on how to help ensure baseline maintenance and ability to safely use key packages in the ecosystem with current Node.js versions.
+          You can find more about this initiative in the article: <a href="https://medium.com/@nodejs/call-to-action-accelerating-node-js-growth-e4862bee2919" target="_blank">Call to Action: Accelerating Node.js Growth</a></p>
+
+        <div class="mui-textfield">
+          <input id='package-name' type="text" placeholder="package name">
+        </div>
+
+        <div class="mui-select">
+          <select id='package-option'>
+            <option value='target'>Target</option>
+            <option value='response'>Response</option>
+            <option value='backing'>Backing</option>
+            <option value='response-paid'>Response Paid</option>
+            <option value='url'>URL</option>
+          </select>
+          <label>Select Type</label>
+        </div>
+
+        <div class="mui-textfield">
+          <textarea id='badge-markdown' placeholder=""></textarea>
+        </div>
+
+        <button id='generate-badge-button' class="mui-btn mui-btn--primary mui-btn--raised">Generate Badge</button>
+      </div>
+    </section>
+
+    <script>
+      window.onload = () => {
+        document
+          .querySelector('#generate-badge-button')
+          .addEventListener('click', async () => {
+            const package = document.querySelector('#package-name').value;
+            const option = document.querySelector('#package-option').value;
+            const badge = `![package maintenance status](${window.location.href}${option}/${package})`;
+            document.querySelector('#badge-markdown').innerHTML = badge;
+          }, false);
+      };
+    </script>
+  </body>
+</html>
